@@ -1,0 +1,384 @@
+
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hero animation */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 650ms ease-out,
+        transform 650ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger-item {
+    opacity: 0;
+    translate: 0 8px;
+    transition:
+        opacity 500ms ease-out,
+        translate 500ms cubic-bezier(0.2, 0.65, 0.3, 1);
+    transition-delay: var(--stagger-delay, 0ms);
+}
+
+.reveal.is-visible .reveal-stagger-item {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* Hero entrance */
+.hero-enter {
+    animation: fade-up 650ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+    animation-delay: var(--hero-delay, 0ms);
+}
+
+.hero-name-word {
+    display: inline-block;
+    animation: fade-up 650ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+
+.hero-name-word:nth-child(1) {
+    animation-delay: 120ms;
+}
+
+.hero-name-word:nth-child(2) {
+    animation-delay: 220ms;
+}
+
+.hero-name-word:nth-child(3) {
+    animation-delay: 320ms;
+}
+
+.hero-profile {
+    animation: fade-up 750ms cubic-bezier(0.2, 0.65, 0.3, 1) 380ms both;
+}
+
+.profile-image {
+    transition:
+        transform 450ms ease,
+        box-shadow 450ms ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.025);
+    box-shadow: 0 18px 48px rgb(52 211 153 / 10%);
+}
+
+/* Navigation links */
+.nav-link {
+    position: relative;
+    transition: color 200ms ease;
+}
+
+.nav-link::after {
+    position: absolute;
+    right: 0;
+    bottom: -5px;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* Modern Hire Me button */
+
+/* Premium Hire Me Animation */
+.hire-me-attention {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid rgb(167 243 208 / 45%);
+    background: linear-gradient(
+        110deg,
+        #059669 0%,
+        #34d399 45%,
+        #10b981 70%,
+        #059669 100%
+    );
+    background-size: 200% 100%;
+    box-shadow:
+        0 0 12px rgb(16 185 129 / 35%),
+        0 0 28px rgb(16 185 129 / 18%);
+    animation:
+        hire-me-gradient 4s ease-in-out infinite,
+        hire-me-pulse 2.4s ease-in-out infinite;
+    transition:
+        box-shadow 250ms ease,
+        transform 250ms ease;
+}
+
+/* Moving gradient */
+@keyframes hire-me-gradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Noticeable but smooth pulse */
+@keyframes hire-me-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 12px rgb(16 185 129 / 35%),
+            0 0 28px rgb(16 185 129 / 18%);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px rgb(16 185 129 / 65%),
+            0 0 42px rgb(16 185 129 / 30%);
+        transform: scale(1.045);
+    }
+}
+
+/* Bright light sweep */
+.hire-me-attention::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        115deg,
+        transparent 20%,
+        rgb(255 255 255 / 8%) 35%,
+        rgb(255 255 255 / 75%) 50%,
+        rgb(255 255 255 / 8%) 65%,
+        transparent 80%
+    );
+    transform: translateX(-130%);
+    animation: hire-me-shine 3.5s ease-in-out infinite;
+}
+
+@keyframes hire-me-shine {
+    0%, 15% {
+        transform: translateX(-130%);
+    }
+
+    55%, 100% {
+        transform: translateX(130%);
+    }
+}
+
+/* Keep text above the light */
+.hire-me-attention > span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover state */
+.hire-me-attention:hover,
+.hire-me-attention:focus-visible {
+    animation-play-state: paused;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow:
+        0 0 24px rgb(16 185 129 / 75%),
+        0 0 48px rgb(16 185 129 / 40%);
+}
+
+.hire-me-attention:hover::before,
+.hire-me-attention:focus-visible::before {
+    animation-play-state: paused;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .hire-me-attention,
+    .hire-me-attention::before {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .hire-me-attention {
+        transform: none;
+    }
+}
+
+
+/* Breathing emerald glow */
+@keyframes hire-me-glow {
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 1px rgb(16 185 129 / 12%),
+            0 0 12px rgb(16 185 129 / 12%);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 1px rgb(52 211 153 / 45%),
+            0 0 24px rgb(16 185 129 / 28%);
+    }
+}
+
+/* Moving light sweep */
+.hire-me-attention::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        110deg,
+        transparent 25%,
+        rgb(255 255 255 / 8%) 38%,
+        rgb(255 255 255 / 65%) 50%,
+        rgb(255 255 255 / 8%) 62%,
+        transparent 75%
+    );
+    transform: translateX(-130%);
+    animation: hire-me-shine 4s ease-in-out infinite;
+}
+
+@keyframes hire-me-shine {
+    0%,
+    18% {
+        transform: translateX(-130%);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    48%,
+    100% {
+        transform: translateX(130%);
+        opacity: 0;
+    }
+}
+
+/* Keep button text above the light */
+.hire-me-attention > span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover and keyboard focus */
+.hire-me-attention:hover,
+.hire-me-attention:focus-visible {
+    animation-play-state: paused;
+    transform: translateY(-2px);
+    background-color: #34d399;
+    box-shadow:
+        0 0 18px rgb(16 185 129 / 42%),
+        0 0 32px rgb(16 185 129 / 20%);
+}
+
+.hire-me-attention:hover::before,
+.hire-me-attention:focus-visible::before {
+    animation-play-state: paused;
+}
+
+/* General interactive elements */
+.interactive-lift {
+    transition:
+        color 200ms ease,
+        background-color 200ms ease,
+        border-color 200ms ease,
+        transform 200ms ease,
+        box-shadow 200ms ease;
+}
+
+.interactive-lift:hover {
+    transform: translateY(-2px);
+}
+
+/* Project cards */
+.project-card {
+    transition:
+        transform 300ms ease,
+        border-color 300ms ease,
+        box-shadow 300ms ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgb(0 0 0 / 22%);
+}
+
+.project-image {
+    transition: transform 500ms ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.035);
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    .reveal.is-visible .reveal-stagger-item {
+        opacity: 1;
+        translate: none;
+        transition: none;
+    }
+
+    .hero-enter,
+    .hero-name-word,
+    .hero-profile,
+    .hire-me-attention,
+    .hire-me-attention::before {
+        animation: none !important;
+    }
+
+    .hire-me-attention {
+        box-shadow: none;
+    }
+
+    .profile-image:hover,
+    .interactive-lift:hover,
+    .project-card:hover,
+    .project-card:hover .project-image {
+        transform: none;
+    }
+
+    .project-card:hover {
+        box-shadow: none;
+    }
+}
