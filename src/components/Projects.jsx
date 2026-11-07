@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import projects from "../data/projects";
 import useScrollReveal from "../hooks/useScrollReveal";
@@ -6,6 +5,10 @@ import useScrollReveal from "../hooks/useScrollReveal";
 function Projects() {
     const sectionRef = useScrollReveal();
     const projectImages = {
+        "event-booking": "/image/event-booking.png",
+        "codesphere": "/image/codeSphere.png",
+        "my-kart":"/image/my-kart.png",
+        "togetherly": "/image/togetherly.png",
         "bazar-dor": "/image/bazar.png",
         fitlog: "/image/fitlog.png",
         "tech-explorer": "/image/tech-explorer.png",
@@ -82,15 +85,43 @@ function Projects() {
                                 </div>
 
                                 {/* Project Links */}
+                                {/* Project Links */}
                                 <div className="mt-6 flex flex-wrap items-center gap-4">
-                                    <a
-                                        href={project.github}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="interactive-lift text-sm font-medium text-gray-300 transition hover:text-emerald-400"
-                                    >
-                                        GitHub ↗
-                                    </a>
+                                    {/* Existing projects with single GitHub repository */}
+                                    {project.github && (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="interactive-lift text-sm font-medium text-gray-300 transition hover:text-emerald-400"
+                                        >
+                                            GitHub ↗
+                                        </a>
+                                    )}
+
+                                    {/* Togetherly frontend repository */}
+                                    {project.githubClient && (
+                                        <a
+                                            href={project.githubClient}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="interactive-lift text-sm font-medium text-gray-300 transition hover:text-emerald-400"
+                                        >
+                                            Frontend ↗
+                                        </a>
+                                    )}
+
+                                    {/* Togetherly backend repository */}
+                                    {project.githubServer && (
+                                        <a
+                                            href={project.githubServer}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="interactive-lift text-sm font-medium text-gray-300 transition hover:text-emerald-400"
+                                        >
+                                            Backend ↗
+                                        </a>
+                                    )}
 
                                     {project.live && (
                                         <a
