@@ -29,22 +29,22 @@ function Education() {
     <section ref={sectionRef} id="education" className="reveal px-6 py-24">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
-          <p className="font-medium text-emerald-400">
+          <p className="text-xs font-semibold tracking-[0.18em] text-accent sm:text-sm">
             MY ACADEMIC BACKGROUND
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
             Education
           </h2>
 
-          <div className="mx-auto mt-4 h-1 w-20 rounded bg-emerald-400" />
+          <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-linear-to-r from-accent/30 via-accent to-accent/30" />
         </div>
 
         <div className="space-y-6">
           {educationList.map((item, index) => (
             <div
               key={item.degree}
-              className="reveal-stagger-item rounded-xl border border-white/10 bg-white/5 p-6 transition hover:border-emerald-400/50"
+              className="lift-card reveal-stagger-item rounded-xl border border-line bg-card p-6 transition hover:border-accent/50"
               style={{ "--stagger-delay": `${index * 75}ms` }}
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -53,18 +53,18 @@ function Education() {
                     {item.degree}
                   </h3>
 
-                  <p className="mt-2 text-emerald-400">
+                  <p className="mt-2 text-accent">
                     {item.institution}
                   </p>
                 </div>
 
-                <span className="w-fit rounded-full bg-emerald-400/10 px-3 py-1 text-sm text-emerald-400">
+                <span className="w-fit rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
                   {item.period}
                 </span>
               </div>
 
               {item.result && (
-                <p className="mt-4 text-sm text-gray-400">
+                <p className="mt-4 text-sm text-muted">
                   {item.result}
                 </p>
               )}

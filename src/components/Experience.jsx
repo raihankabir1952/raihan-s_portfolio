@@ -23,21 +23,21 @@ function Experience() {
     <section ref={sectionRef} id="experience" className="reveal px-6 py-24">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
-          <p className="font-medium text-emerald-400">
+          <p className="text-xs font-semibold tracking-[0.18em] text-accent sm:text-sm">
             MY PROFESSIONAL JOURNEY
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
             Experience
           </h2>
 
-          <div className="mx-auto mt-4 h-1 w-20 rounded bg-emerald-400" />
+          <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-linear-to-r from-accent/30 via-accent to-accent/30" />
         </div>
 
         {experiences.map((experience) => (
           <div
             key={experience.company}
-            className="rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8"
+            className="lift-card rounded-xl border border-line bg-card p-6 transition duration-300 hover:border-accent/50 sm:p-8"
           >
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
@@ -45,16 +45,16 @@ function Experience() {
                   {experience.role}
                 </h3>
 
-                <p className="mt-2 text-lg text-emerald-400">
+                <p className="mt-2 text-lg text-accent">
                   {experience.company}
                 </p>
 
-                <p className="mt-2 text-sm text-gray-400">
+                <p className="mt-2 text-sm text-muted">
                   {experience.type}
                 </p>
               </div>
 
-              <span className="w-fit rounded-full bg-emerald-400/10 px-3 py-1 text-sm text-emerald-400">
+              <span className="w-fit rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
                 {experience.period}
               </span>
             </div>
@@ -63,9 +63,9 @@ function Experience() {
               {experience.responsibilities.map((item) => (
                 <li
                   key={item}
-                  className="flex gap-3 leading-7 text-gray-400"
+                  className="flex gap-3 leading-7 text-muted"
                 >
-                  <span className="text-emerald-400">✓</span>
+                  <span className="text-accent">✓</span>
                   <span>{item}</span>
                 </li>
               ))}

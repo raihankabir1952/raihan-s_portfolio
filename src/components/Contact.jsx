@@ -31,17 +31,17 @@ function Contact() {
     <section ref={sectionRef} id="contact" className="reveal px-6 py-24">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
-          <p className="font-medium text-emerald-400">
+          <p className="text-xs font-semibold tracking-[0.18em] text-accent sm:text-sm">
             LET'S CONNECT
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
             Contact Me
           </h2>
 
-          <div className="mx-auto mt-4 h-1 w-20 rounded bg-emerald-400" />
+          <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-linear-to-r from-accent/30 via-accent to-accent/30" />
 
-          <p className="mx-auto mt-6 max-w-2xl leading-7 text-gray-400">
+          <p className="mx-auto mt-6 max-w-2xl leading-7 text-muted">
             I'm open to entry-level software engineering and
             full-stack development opportunities. Feel free to
             contact me to discuss opportunities or projects.
@@ -52,10 +52,10 @@ function Contact() {
           {contactInfo.map((item, index) => (
             <div
               key={item.label}
-              className="reveal-stagger-item rounded-xl border border-white/10 bg-white/5 p-6 transition hover:border-emerald-400/50"
+              className="lift-card reveal-stagger-item rounded-xl border border-line bg-card p-6 transition hover:border-accent/50"
               style={{ "--stagger-delay": `${index * 60}ms` }}
             >
-              <h3 className="font-semibold text-emerald-400">
+              <h3 className="font-semibold text-accent">
                 {item.label}
               </h3>
 
@@ -68,12 +68,12 @@ function Contact() {
                       : "_blank"
                   }
                   rel="noreferrer"
-                  className="interactive-lift mt-3 inline-block break-all text-gray-300 transition hover:text-emerald-400"
+                  className="interactive-lift mt-3 inline-block break-all text-soft transition hover:text-accent"
                 >
                   {item.value}
                 </a>
               ) : (
-                <p className="mt-3 text-gray-400">{item.value}</p>
+                <p className="mt-3 text-muted">{item.value}</p>
               )}
             </div>
           ))}

@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
     { name: "Home", href: "#home" },
@@ -19,15 +20,15 @@ function Navbar() {
     }
 
     return (
-        <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-gray-950/90 backdrop-blur-md">
+        <nav className="fixed top-0 z-50 w-full border-b border-line bg-nav backdrop-blur-md">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
                 {/* Logo */}
                 <a
                     href="#home"
                     onClick={closeMenu}
-                    className="interactive-lift text-xl font-bold text-emerald-400"
+                    className="interactive-lift text-xl font-bold text-accent"
                 >
-                    Raihan<span className="text-white">.dev</span>
+                    Raihan<span className="text-heading">.dev</span>
                 </a>
 
                 {/* Desktop Navigation */}
@@ -36,7 +37,7 @@ function Navbar() {
                         <a
                             key={link.name}
                             href={link.href}
-                            className="interactive-lift nav-link text-sm text-gray-300 transition hover:text-emerald-400"
+                            className="interactive-lift nav-link text-sm text-soft transition hover:text-accent"
                         >
                             {link.name}
                         </a>
@@ -44,6 +45,9 @@ function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-3">
+                    {/* Theme Toggle */}
+                    <ThemeToggle />
+
                     {/* Desktop Hire Me */}
                     <a
                         href="#contact"
@@ -63,7 +67,7 @@ function Navbar() {
                                 : "Open navigation menu"
                         }
                         aria-expanded={isOpen}
-                        className="interactive-lift flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-2xl text-white transition hover:border-emerald-400 lg:hidden"
+                        className="interactive-lift flex h-10 w-10 items-center justify-center rounded-lg border border-line text-2xl text-heading transition hover:border-accent lg:hidden"
                     >
                         {isOpen ? "×" : "☰"}
                     </button>
@@ -72,14 +76,14 @@ function Navbar() {
 
             {/* Mobile Navigation */}
             {isOpen && (
-                <div className="border-t border-white/10 bg-gray-950 px-6 py-4 lg:hidden">
+                <div className="max-h-[calc(100dvh_-_4.5rem)] overflow-y-auto border-t border-line bg-page px-6 py-4 lg:hidden">
                     <div className="mx-auto flex max-w-7xl flex-col gap-1">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
                                 onClick={closeMenu}
-                                className="interactive-lift nav-link rounded-lg px-3 py-3 text-gray-300 transition hover:bg-white/5 hover:text-emerald-400"
+                                className="interactive-lift nav-link rounded-lg px-3 py-3 text-soft transition hover:bg-card hover:text-accent"
                             >
                                 {link.name}
                             </a>

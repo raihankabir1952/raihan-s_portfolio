@@ -1,8 +1,76 @@
 
 @import "tailwindcss";
 
+/*
+ * Semantic theme tokens. Dark values are the default; `html.light` overrides
+ * them (class is set by the inline script in index.html and src/hooks/useTheme.js).
+ * In JSX, use these utilities (bg-page, bg-card, text-heading, text-muted,
+ * text-accent, border-line, ...) instead of raw palette classes (gray, white,
+ * emerald) so both themes stay in sync. Solid emerald-500 buttons work in both.
+ */
+@theme {
+    --color-page: #030712;
+    --color-nav: rgb(3 7 18 / 0.9);
+    --color-card: rgb(255 255 255 / 0.05);
+    --color-chip: #111827;
+    --color-line: rgb(255 255 255 / 0.1);
+    --color-line-strong: #4b5563;
+    --color-heading: #ffffff;
+    --color-soft: #d1d5db;
+    --color-muted: #9ca3af;
+    --color-accent: #34d399;
+}
+
+html.light {
+    --color-page: #f8fafc;
+    --color-nav: rgb(248 250 252 / 0.9);
+    --color-card: #ffffff;
+    --color-chip: #f1f5f9;
+    --color-line: rgb(15 23 42 / 0.1);
+    --color-line-strong: #cbd5e1;
+    --color-heading: #0f172a;
+    --color-soft: #334155;
+    --color-muted: #64748b;
+    --color-accent: #059669;
+}
+
 html {
     scroll-behavior: smooth;
+    /* Keep anchor targets clear of the fixed navbar. */
+    scroll-padding-top: 5rem;
+    color-scheme: dark;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-strong) transparent;
+}
+
+html.light {
+    color-scheme: light;
+}
+
+body {
+    background-color: var(--color-page);
+    /* Ambient accent glow painted on the canvas behind every section. */
+    background-image:
+        radial-gradient(
+            55rem 30rem at 85% -10%,
+            color-mix(in oklab, var(--color-accent) 7%, transparent),
+            transparent 70%
+        ),
+        radial-gradient(
+            45rem 26rem at -10% 40%,
+            color-mix(in oklab, var(--color-accent) 5%, transparent),
+            transparent 70%
+        );
+    color: var(--color-heading);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Sora", "Inter", system-ui, sans-serif;
+}
+
+::selection {
+    background: color-mix(in oklab, var(--color-accent) 30%, transparent);
 }
 
 /* Hero animation */
@@ -37,8 +105,21 @@ html {
     translate: 0 8px;
     transition:
         opacity 500ms ease-out,
-        translate 500ms cubic-bezier(0.2, 0.65, 0.3, 1);
-    transition-delay: var(--stagger-delay, 0ms);
+        translate 500ms cubic-bezier(0.2, 0.65, 0.3, 1),
+        transform 300ms ease,
+        border-color 300ms ease;
+    /* Stagger only the entrance (opacity/translate); hover reactions are instant. */
+    transition-delay:
+        var(--stagger-delay, 0ms),
+        var(--stagger-delay, 0ms),
+        0ms,
+        0ms;
+}
+
+/* Shared card hover lift. Uses `transform` so it never fights the `translate`
+   property that .reveal-stagger-item uses for its entrance animation. */
+.lift-card:hover {
+    transform: translateY(-4px);
 }
 
 .reveal.is-visible .reveal-stagger-item {
@@ -81,7 +162,7 @@ html {
 
 .profile-image:hover {
     transform: scale(1.025);
-    box-shadow: 0 18px 48px rgb(52 211 153 / 10%);
+    box-shadow: 0 20px 60px -12px rgb(16 185 129 / 45%);
 }
 
 /* Navigation links */

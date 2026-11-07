@@ -19,15 +19,15 @@ function Projects() {
             <div className="mx-auto max-w-7xl">
                 {/* Section Heading */}
                 <div className="mb-12 text-center">
-                    <p className="font-medium text-emerald-400">
+                    <p className="text-xs font-semibold tracking-[0.18em] text-accent sm:text-sm">
                         SOME THINGS I'VE BUILT
                     </p>
 
-                    <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                    <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
                         Featured Projects
                     </h2>
 
-                    <div className="mx-auto mt-4 h-1 w-20 rounded bg-emerald-400" />
+                    <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-linear-to-r from-accent/30 via-accent to-accent/30" />
                 </div>
 
                 {/* Project Cards */}
@@ -35,13 +35,13 @@ function Projects() {
                     {projects.map((project, index) => (
                         <article
                             key={project.id}
-                            className="project-card reveal-stagger-item flex flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 hover:border-emerald-400/50"
+                            className="project-card reveal-stagger-item flex flex-col overflow-hidden rounded-xl border border-line bg-card hover:border-accent/50"
                             style={{
                                 "--stagger-delay": `${Math.min(index, 4) * 70}ms`,
                             }}
                         >
                             {/* Project Image */}
-                            <div className="h-48 overflow-hidden bg-gray-900">
+                            <div className="h-48 overflow-hidden bg-chip">
                                 {projectImages[project.id] ? (
                                     <img
                                         src={projectImages[project.id]}
@@ -50,8 +50,8 @@ function Projects() {
                                         loading="lazy"
                                     />
                                 ) : (
-                                    <div className="flex h-full items-center justify-center bg-gradient-to-br from-emerald-400/20 to-gray-900">
-                                        <span className="px-3 text-center text-3xl font-bold text-emerald-400">
+                                    <div className="flex h-full items-center justify-center bg-gradient-to-br from-accent/20 to-chip">
+                                        <span className="px-3 text-center text-3xl font-bold text-accent">
                                             {project.name}
                                         </span>
                                     </div>
@@ -60,7 +60,7 @@ function Projects() {
 
                             {/* Project Information */}
                             <div className="flex flex-1 flex-col p-6">
-                                <p className="text-sm text-emerald-400">
+                                <p className="text-sm text-accent">
                                     {project.category}
                                 </p>
 
@@ -68,7 +68,7 @@ function Projects() {
                                     {project.name}
                                 </h3>
 
-                                <p className="mt-3 flex-1 leading-7 text-gray-400">
+                                <p className="mt-3 flex-1 leading-7 text-muted">
                                     {project.description}
                                 </p>
 
@@ -77,14 +77,13 @@ function Projects() {
                                     {project.tech.map((technology) => (
                                         <span
                                             key={technology}
-                                            className="rounded-md bg-gray-900 px-2 py-1 text-xs text-gray-300"
+                                            className="rounded-md bg-chip px-2 py-1 text-xs text-soft"
                                         >
                                             {technology}
                                         </span>
                                     ))}
                                 </div>
 
-                                {/* Project Links */}
                                 {/* Project Links */}
                                 <div className="mt-6 flex flex-wrap items-center gap-4">
                                     {/* Existing projects with single GitHub repository */}
@@ -93,7 +92,7 @@ function Projects() {
                                             href={project.github}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="interactive-lift text-sm font-medium text-gray-300 transition hover:text-emerald-400"
+                                            className="interactive-lift text-sm font-medium text-soft transition hover:text-accent"
                                         >
                                             GitHub ↗
                                         </a>
@@ -105,7 +104,7 @@ function Projects() {
                                             href={project.githubClient}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="interactive-lift text-sm font-medium text-gray-300 transition hover:text-emerald-400"
+                                            className="interactive-lift text-sm font-medium text-soft transition hover:text-accent"
                                         >
                                             Frontend ↗
                                         </a>
@@ -117,7 +116,7 @@ function Projects() {
                                             href={project.githubServer}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="interactive-lift text-sm font-medium text-gray-300 transition hover:text-emerald-400"
+                                            className="interactive-lift text-sm font-medium text-soft transition hover:text-accent"
                                         >
                                             Backend ↗
                                         </a>
@@ -128,7 +127,7 @@ function Projects() {
                                             href={project.live}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="interactive-lift text-sm font-medium text-gray-300 transition hover:text-emerald-400"
+                                            className="interactive-lift text-sm font-medium text-soft transition hover:text-accent"
                                         >
                                             Live Demo ↗
                                         </a>
@@ -138,7 +137,7 @@ function Projects() {
                                 {/* Project Details */}
                                 <Link
                                     to={`/projects/${project.id}`}
-                                    className="interactive-lift mt-6 inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-gray-950 transition hover:bg-emerald-400"
+                                    className="interactive-lift mt-6 inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-gray-950 transition hover:bg-accent"
                                 >
                                     View Details →
                                 </Link>
