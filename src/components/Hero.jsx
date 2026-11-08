@@ -13,7 +13,7 @@ function Hero() {
           </p>
 
           <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            <span className="hero-name-word">Md </span>
+            {/* <span className="hero-name-word">Md </span> */}
             <span className="hero-name-word">Raihan </span>
             <span className="hero-name-word">Kabir</span>
           </h1>
